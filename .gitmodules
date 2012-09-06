@@ -1,0 +1,78 @@
+[submodule ".vim/bundle/pathogen"]
+	path = .vim/bundle/pathogen
+	url = git://github.com/tpope/vim-pathogen.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/nerdcommenter"]
+	path = .vim/bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule ".vim/bundle/taglist"]
+	path = .vim/bundle/taglist
+	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule ".vim/bundle/surround"]
+	path = .vim/bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
+[submodule ".vim/bundle/easymotion"]
+	path = .vim/bundle/easymotion
+	url = git://github.com/Lokaltog/vim-easymotion.git
+[submodule ".vim/bundle/snipmate"]
+	path = .vim/bundle/snipmate
+	url = git://github.com/garbas/vim-snipmate.git
+[submodule ".vim/bundle/tlib"]
+	path = .vim/bundle/tlib
+	url = git://github.com/tomtom/tlib_vim.git
+[submodule ".vim/bundle/mw-utils"]
+	path = .vim/bundle/mw-utils
+	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule ".vim/bundle/snipmate-snippets"]
+	path = .vim/bundle/snipmate-snippets
+	url = git://github.com/honza/snipmate-snippets.git
+[submodule ".vim/bundle/l9"]
+	path = .vim/bundle/l9
+	url = git://github.com/vim-scripts/L9.git
+[submodule ".vim/bundle/fuzzyfinder"]
+	path = .vim/bundle/fuzzyfinder
+	url = git://github.com/vim-scripts/FuzzyFinder.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/statline"]
+	path = .vim/bundle/statline
+	url = git://github.com/scrooloose/vim-statline
+[submodule ".vim/bundle/diffchanges"]
+	path = .vim/bundle/diffchanges
+	url = git://github.com/jmcantrell/vim-diffchanges.git
+[submodule ".vim/bundle/tasklist"]
+	path = .vim/bundle/tasklist
+	url = git://github.com/vim-scripts/TaskList.vim.git
+[submodule ".vim/bundle/align"]
+	path = .vim/bundle/align
+	url = git://github.com/vim-scripts/Align.git
+[submodule ".vim/bundle/scratch"]
+	path = .vim/bundle/scratch
+	url = git://github.com/vim-scripts/scratch.vim.git
+[submodule ".vim/bundle/writer"]
+	path = .vim/bundle/writer
+	url = git://github.com/bradym/writer.vim.git
+[submodule ".vim/bundle/zencoding"]
+	path = .vim/bundle/zencoding
+	url = git://github.com/mattn/zencoding-vim.git
+[submodule ".vim/bundle/markdown"]
+	path = .vim/bundle/markdown
+	url = git://github.com/plasticboy/vim-markdown.git
+[submodule ".vim/bundle/vilight"]
+	path = .vim/bundle/vilight
+	url = git://github.com/vim-scripts/vilight.vim.git
+[submodule ".vim/bundle/visualcpp"]
+	path = .vim/bundle/visualcpp
+	url = git://github.com/bradym/vim_wok_visualcpp
+[submodule ".vim/bundle/writegood"]
+	path = .vim/bundle/writegood
+	url = git://github.com/davidbeckingsale/writegood.vim.git
+[submodule ".vim/bundle/linediff"]
+	path = .vim/bundle/linediff
+	url = git://github.com/AndrewRadev/linediff.vim.git
