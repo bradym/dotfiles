@@ -29,7 +29,6 @@ function rename_existing (){
     fi
 }
 
-
 # --------------------------------------------------------
 # Setup bash
 # --------------------------------------------------------
@@ -49,7 +48,6 @@ else
     ln -nvfs $DIR/.bash_ps1 $TARGET/.bash_ps1
 fi
 
-
 # --------------------------------------------------------
 # Setup vim
 # --------------------------------------------------------
@@ -64,8 +62,9 @@ ln -nvfs $DIR/.vimrc $TARGET/.vimrc
 rename_existing .vim
 
 # Setup vim plugins
-git --git-dir=/$DIR/.git --work-tree=$DIR submodule init
-git --git-dir=/$DIR/.git --work-tree=$DIR submodule update 
+cd $DIR
+git submodule init
+git submodule update 
 
 # If a symlink exists for .vim it will be modified
 ln -nvfs $DIR/.vim $TARGET/.vim
