@@ -26,20 +26,24 @@ alias vi='vim'
 
 alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
-
+  
 
 ################################################
 # Shell options				                   #
 ################################################
 # A command name that is the name of a directory is executed as if it
 # were the argument to the cd command.
-shopt -s autocd
+if [[ $BASH_VERSINFO -ge 4 ]]; then
+    shopt -s autocd
+fi
 
 # Correct minor spelling errors in cd command.
 shopt -s cdspell
 
 # Check for stopped jobs and output a list when trying to exit bash
-shopt -s checkjobs
+if [[ $BASH_VERSINFO -ge 4 ]]; then
+    shopt -s checkjobs
+fi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
