@@ -96,7 +96,7 @@ shopt -s histreedit
 ################################################
 # Command prompt settings		               #
 ################################################
-PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+export PS1="\[\e]2;\u@\H \w\a\e[32;1m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
 
 # Tweaked prompt
 if [ -f "$HOME/.bash_ps1" ]; then
@@ -146,7 +146,6 @@ cdl() {
 # Windows settings                             #
 ################################################
 if [ $OSTYPE == 'cygwin' ] ; then
-    function vim { /cygdrive/c/Program\ Files/Vim/vim73/gvim.exe "$@" & }
     alias ll="ls -lAthFo"
 fi
 
