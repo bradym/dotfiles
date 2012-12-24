@@ -11,7 +11,7 @@
     set autoread                            " watch for file changes
     set backspace=indent,eol,start          " make backspace more flexible
     set clipboard+=unnamed                  " share system clipboard
-    set directory=$TMPDIR                   " where to put swap files
+    set directory=/tmp                      " where to put swap files
     set encoding=utf-8                      " set encoding to utf-8
     set fileencoding=utf-8                  " set encoding to utf-8
     set fileencodings=utf-8                 " set encoding to utf-8
