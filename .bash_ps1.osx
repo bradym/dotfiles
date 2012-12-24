@@ -13,11 +13,10 @@ fill="--- "
 reset_style='\[\033[00m\]'
 status_style=$reset_style'\[\033[0;37m\]'
 prompt_style=$reset_style
-#command_style=$reset_style'\[\033[1;29m\]' # bold black
 command_style=$reset_style
 
 # Prompt variable:
-PS1="$status_style"'$fill \t\n'"$prompt_style"'${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"$command_style "
+PS1="$status_style"'$fill \t\n'"$prompt_style"'\u@\h:\w $(be_get_branch "$2")\$'"$command_style "
 
 # Reset color for command output
 # (this one is invoked every time before a command is executed):
