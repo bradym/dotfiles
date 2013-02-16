@@ -96,11 +96,12 @@ shopt -s histreedit
 ################################################
 # Command prompt settings                      #
 ################################################
-export PS1="\[\e]2;\u@\H \w\a\e[32;1m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
 
 # Tweaked prompt
 if [ -f "$HOME/.bash_ps1" ]; then
     source "$HOME/.bash_ps1"
+else
+    export PS1="\[\e]2;\u@\H \w\a\e[32;1m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
 fi
 
 ################################################
@@ -180,19 +181,6 @@ export GIT_PS1_SHOWDIRTYSTATE=yes
 ################################################
 if [ $OSTYPE == 'cygwin' ] ; then
     alias ll="ls -lAthFo"
-fi
-
-################################################
-# OS X settings                                #
-################################################
-if [[ $OSTYPE == *darwin* ]]; then
-    if [ -f "$HOME/.bash_ps1.osx" ]; then
-        source "$HOME/.bash_ps1.osx"
-    fi
-
-    if [ -d "/usr/local/lib/python2.7/site-packages/" ]; then
-        export PYTHONPATH=/usr/local/lib/python2.7/site-packages/
-    fi
 fi
 
 ################################################

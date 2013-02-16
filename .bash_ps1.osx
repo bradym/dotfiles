@@ -12,7 +12,7 @@ fill="--- "
 
 reset_style='\[\033[00m\]'
 status_style=$reset_style'\[\033[0;37m\]'
-prompt_style=$reset_style
+prompt_style=$reset_style'\[\033[0;32m\]'
 command_style=$reset_style
 
 # Prompt variable:
