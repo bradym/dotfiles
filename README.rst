@@ -100,7 +100,20 @@ If you want to remove a plugin, you'll need to remove the git submodule see
 this `stackoverflow <http://stackoverflow.com/questions/1260748/how-do-i-remove-a-git-submodule#answer-1260982>`_
 answer for help.
 
+Credits
+-------
 
+I've copied from so many dotfile repos over the years that I don't know
+where most if it came from at this point, but here are some of the places
+I've taken ideas and code from:
+
+- https://github.com/mitchellmckenna/dotfiles
+- https://github.com/emilis/emilis-config
+- https://github.com/whiteinge/dotfiles
+- http://ruslanspivak.com/2010/06/02/urlencode-and-urldecode-from-a-command-line/
+
+If you recognize something and know where it came from, let me know and
+I'll update this list.
 
     
 
