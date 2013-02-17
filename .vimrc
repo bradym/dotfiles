@@ -153,12 +153,6 @@
         let g:snips_trigger_key='<c-space>'
     " }
     
-    " SuperTab settings {
-        let g:SuperTabDefaultCompletionType = "context"
-        let g:SuperTabLongestHighlight = 1
-        let g:SuperTabLongestEnhanced = 1
-    " }
-    
     " Syntastic settings {
         let g:syntastic_check_on_open = 1
         let g:syntastic_auto_loc_list=1
