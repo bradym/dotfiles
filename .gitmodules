@@ -28,9 +28,6 @@
 [submodule ".vim/bundle/mw-utils"]
 	path = .vim/bundle/mw-utils
 	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule ".vim/bundle/snipmate-snippets"]
-	path = .vim/bundle/snipmate-snippets
-	url = git://github.com/honza/snipmate-snippets.git
 [submodule ".vim/bundle/l9"]
 	path = .vim/bundle/l9
 	url = git://github.com/vim-scripts/L9.git
@@ -76,3 +73,6 @@
 [submodule ".vim/bundle/linediff"]
 	path = .vim/bundle/linediff
 	url = git://github.com/AndrewRadev/linediff.vim.git
+[submodule ".vim/bundle/vim-snippets"]
+	path = .vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets
