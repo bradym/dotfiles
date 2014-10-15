@@ -22,7 +22,7 @@ fi
 function rename_existing (){
     FILENAME=$1
 
-    if [[ -e "$TARGET/$FILENAME" ]] && [[ ! -L "$TARGET/$FILENAME" ]] || [[ -d "$TARGET/$FILENAME" ]]; then
+    if ([[ -e "$TARGET/$FILENAME" ]] && [[ ! -L "$TARGET/$FILENAME" ]]) || [[ -d "$TARGET/$FILENAME" ]]; then
         OLDNAME=$FILENAME"_backup.$(date +%s)"
         mv "$TARGET/$FILENAME" "$TARGET/$OLDNAME"
         echo "Existing $FILENAME found and renamed to $OLDNAME"
@@ -33,38 +33,49 @@ function rename_existing (){
 # Setup bash
 # --------------------------------------------------------
 
-# Check for existing .bashrc and rename
-rename_existing .bashrc
+# Only files that are in this varible will be symlinked
+FILES=".aliases
+.bash_profile
+.bash_prompt
+.bashrc
+.curlrc
+.editorconfig
+.exports
+.functions
+.gitconfig
+.gitignore
+.hgignore
+.hushlogin
+.inputrc
+.screenrc
+.vimrc
+.wgetrc"
 
-# If a symlink exists for .bashrc, it will be modified 
-ln -nvfs $DIR/.bashrc $TARGET/.bashrc
+for file in $FILES
+do
+    ls -lh $file
+    rename_existing $file
+    ln -nvfs $DIR/$file $TARGET/$file
+done
 
-# Link correct prompt setup file
-rename_existing .bash_ps1
-
-if [[ $OSTYPE == *darwin* ]]; then
-    ln -nvfs $DIR/.bash_ps1.osx $TARGET/.bash_ps1
-else
-    ln -nvfs $DIR/.bash_ps1 $TARGET/.bash_ps1
-fi
 
 # --------------------------------------------------------
 # Setup vim
 # --------------------------------------------------------
 
-# Check for existing .vimrc and rename
-rename_existing .vimrc
-
-# If a symlink exists for .vimrc it will be modified
-ln -nvfs $DIR/.vimrc $TARGET/.vimrc
-
-# If .vim folder exists, rename and notify user
+# If there's already a .vim folder, rename it
 rename_existing .vim
 
-# Setup vim plugins
+# Install Vundle
+git clone https://github.com/gmarik/Vundle.vim.git $TARGET/.vim/bundle/Vundle.vim
+
+# Install other vim plugins
+vim +PluginInstall +qall
+
+# Need to install rstcheck to support rst plugin
+pip install rstcheck
+
 cd $DIR
-git submodule init
-git submodule update 
 
 # If a symlink exists for .vim it will be modified
 ln -nvfs $DIR/.vim $TARGET/.vim
