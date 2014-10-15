@@ -45,20 +45,26 @@
     set cursorline                          " highlight current line
     set laststatus=2                        " always show status line
     set lazyredraw                          " don't redraw when don't have to
+    set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_    " Set placeholders for invisible characters
     set linebreak                           " smarter wordwrap
+    set list 				    " Show “invisible” characters
     set more                                " listings pause when the whole screen is filled
+    set mouse=a 			    " Enable mouse in all modes
+    set nostartofline			    " Don’t reset cursor to start of line when moving around.
     set number                              " turn on line numbers
     set report=0                            " always report changes
     set ruler                               " always show current position in file
     set scrolloff=10                        " always keep 10 lines above and below cursor
+    set shortmess=atI			    " Don’t show the intro message when starting Vim
     set showcmd                             " show partial command in the last line of the screen
     set showfulltag                         " show full completion tags
     set showmode                            " show mode on last line of the screen
     set showtabline=0                       " don't use tabs
     set sidescrolloff=10                    " always keep 10 lines to the left and right of cursor
+    set title				    " Show the filename in the window titlebar
 
     if has("gui_running")
-        set gfn=Monaco                      " what font to use
+        set gfn=Source\ Code\ Pro           " what font to use
         set guioptions=mre                  " show menubar, right scrollbar and tabline
         set tabline=1                       " show tabline only when there are at least 2 tabs open
         colorscheme vilight                 " set colorscheme
@@ -76,7 +82,9 @@
 " }
 
 " Search options {
+    set hlsearch 			    " Highlight searches
     set ignorecase                          " case insensitve searching by default
+    set incsearch 			    " Highlight dynamically as pattern is typed
     set smartcase                           " do case sensitive searches when caps are present
 " }
 
@@ -94,7 +102,9 @@
 " }
 
 " Custom file type mappings {
-    au BufNewFile,BufRead capfile setf ruby " Setup capfile as ruby file
+    autocmd BufNewFile,BufRead capfile setf ruby 		" Setup capfile as ruby file
+    autocmd BufNewFile,BufRead *.md setlocal filetype=markdown 	" Setup .md as markdown
+    autocmd BufNewFile,BufRead *.rst setlocal filetype=rst 	" Setup .rst as reStructuredText
 " }
 
 " Custom key mappings {
@@ -157,6 +167,7 @@
         let g:syntastic_check_on_open = 1
         let g:syntastic_auto_loc_list=1
         let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+        let g:syntastic_rst_checkers = ['rstcheck']
     " }
 " }
 
