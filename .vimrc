@@ -1,8 +1,43 @@
-" Setup Pathogen {
-    source ~/.vim/bundle/pathogen/autoload/pathogen.vim
-    call pathogen#runtime_append_all_bundles()
-    call pathogen#helptags()
-" }
+" Vundle setup to simplify plugin management. Must come before everything else to work correctly.
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+    " Let Vundle manage itself
+    Plugin 'gmarik/Vundle.vim'
+
+    " Plugins
+    Plugin 'AndrewRadev/linediff.vim'
+    Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'MarcWeber/vim-addon-mw-utils'
+    Plugin 'Rykka/riv.vim'
+    Plugin 'bradym/vim_wok_visualcpp'
+    Plugin 'bradym/writer.vim'
+    Plugin 'davidbeckingsale/writegood.vim'
+    Plugin 'elzr/vim-json'
+    Plugin 'garbas/vim-snipmate'
+    Plugin 'honza/vim-snippets'
+    Plugin 'jmcantrell/vim-diffchanges'
+    Plugin 'mattn/emmet-vim'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'tpope/vim-surround'
+    Plugin 'vim-scripts/Align'
+    Plugin 'vim-scripts/FuzzyFinder'
+    Plugin 'vim-scripts/L9'
+    Plugin 'vim-scripts/TaskList.vim'
+    Plugin 'vim-scripts/scratch.vim'
+    Plugin 'vim-scripts/taglist.vim'
+    Plugin 'vim-scripts/vilight.vim'
+    Plugin 'bling/vim-airline'
+    Plugin 'rizzatti/dash.vim'
+
+call vundle#end()
 
 " Basic settings {
     filetype plugin indent on               " load filetype plugins/indent settings
@@ -17,9 +52,9 @@
     set fileencodings=utf-8                 " set encoding to utf-8
     set fileformat=unix                     " use unix linebreaks
     set hidden                              " allow switching between buffers without saving
+    set history=700                         " make vim remember more history
     set iskeyword+=_,$,@,%,#                " none of these are word dividers
     set nobackup                            " don't make backup files
-    set nocompatible                        " get out of vi-compatible mode
     set noerrorbells                        " don't make noise
     set ttyfast                             " we have a fast terminal
     set undolevels=1000                     " 1000 undos
@@ -29,7 +64,7 @@
     set wildignore+=*.o,*~,.lo              " ignore object files
     set wildmenu                            " menu has tab completion
     set wildmode=longest:full               " completion mode for wildmenu, complete till longest common string and start wildmenu
-" } 
+" }
 
 " Spell check settings {
     if v:version >= 700
@@ -47,24 +82,26 @@
     set lazyredraw                          " don't redraw when don't have to
     set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_    " Set placeholders for invisible characters
     set linebreak                           " smarter wordwrap
-    set list 				    " Show “invisible” characters
+    set list                                " Show “invisible” characters
+    set mat=2                               " How many tenths of a second to blink when matching brackets
     set more                                " listings pause when the whole screen is filled
-    set mouse=a 			    " Enable mouse in all modes
-    set nostartofline			    " Don’t reset cursor to start of line when moving around.
+    set mouse=a                             " Enable mouse in all modes
+    set nostartofline                       " Don’t reset cursor to start of line when moving around.
     set number                              " turn on line numbers
     set report=0                            " always report changes
     set ruler                               " always show current position in file
     set scrolloff=10                        " always keep 10 lines above and below cursor
-    set shortmess=atI			    " Don’t show the intro message when starting Vim
+    set shortmess=atI                       " Don’t show the intro message when starting Vim
     set showcmd                             " show partial command in the last line of the screen
     set showfulltag                         " show full completion tags
+    set showmatch                           " Show matching brackets when text indicator is over them
     set showmode                            " show mode on last line of the screen
     set showtabline=0                       " don't use tabs
     set sidescrolloff=10                    " always keep 10 lines to the left and right of cursor
-    set title				    " Show the filename in the window titlebar
+    set title                               " Show the filename in the window titlebar
 
     if has("gui_running")
-        set gfn=Source\ Code\ Pro           " what font to use
+        set gfn=Source\ Code\ Pro:h14       " what font to use
         set guioptions=mre                  " show menubar, right scrollbar and tabline
         set tabline=1                       " show tabline only when there are at least 2 tabs open
         colorscheme vilight                 " set colorscheme
@@ -82,9 +119,9 @@
 " }
 
 " Search options {
-    set hlsearch 			    " Highlight searches
+    set hlsearch                            " Highlight searches
     set ignorecase                          " case insensitve searching by default
-    set incsearch 			    " Highlight dynamically as pattern is typed
+    set incsearch                           " Highlight dynamically as pattern is typed
     set smartcase                           " do case sensitive searches when caps are present
 " }
 
@@ -102,9 +139,14 @@
 " }
 
 " Custom file type mappings {
-    autocmd BufNewFile,BufRead capfile setf ruby 		" Setup capfile as ruby file
-    autocmd BufNewFile,BufRead *.md setlocal filetype=markdown 	" Setup .md as markdown
-    autocmd BufNewFile,BufRead *.rst setlocal filetype=rst 	" Setup .rst as reStructuredText
+    autocmd BufNewFile,BufRead capfile setf ruby                " Setup capfile as ruby file
+    autocmd BufNewFile,BufRead *.md setlocal filetype=markdown  " Setup .md as markdown
+    autocmd BufNewFile,BufRead *.rst setlocal filetype=rst      " Setup .rst as reStructuredText
+    autocmd BufNewFile,BufRead *.ctp setlocal filetype=php      " Setup .ctp as php
+" }
+
+" Custom FileType settings {
+    autocmd FileType php noremap K :Dash<CR>
 " }
 
 " Custom key mappings {
@@ -128,7 +170,7 @@
 
     map <F3> :NERDTreeToggle<CR>                                            " Toggle NERDTree
     map <F4> :TlistToggle<CR>                                               " Toggle Tag List
-    map <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>       " Strip all trailing whitespace in file 
+    map <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>       " Strip all trailing whitespace in file
     map <F7> :TaskList<CR>                                                  " Toggle Task List
     map <F8> :Scratch<CR>                                                   " Open scratch buffer
     map <F9> :Sscratch<CR>                                                  " Open scratch buffer and split window horizontally
@@ -137,9 +179,10 @@
 " Plugin Settings {
 
     "NERDTree Settings {
-        let NERDChristmasTree = 1
-        let NERDTreeShowFiles = 1
         let NERDTreeShowBookmarks = 1
+        let NERDTreeShowHidden = 1
+        let NERDTreeWinPos = "right"
+        let NERDTreeAutoDeleteBuffer = 1
     " }
 
     " Taglist settings {
@@ -159,10 +202,6 @@
         let g:tlWindowPosition = 1
     " }
 
-    " Snipmate settings {
-        let g:snips_trigger_key='<c-space>'
-    " }
-    
     " Syntastic settings {
         let g:syntastic_check_on_open = 1
         let g:syntastic_auto_loc_list=1

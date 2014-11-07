@@ -15,3 +15,7 @@ Thumbs.db
 
 # IDE settings
 .idea/*
+
+# Vim files
+.netrwhist
+.vim
